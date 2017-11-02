@@ -1,0 +1,119 @@
+<!DOCTYPE html> <!--Indica ao navegador que trata-se de um documento html-->
+<html lang="pt-br"> <!--Indica que o documento será escrito em português do Brasil-->
+    <head>
+        <meta charset = "UTF-8"> <!--Padrão de linguagem que permite acentuação - Não tem fechamento-->
+        <title>Tudo sobre Google Glass</title> <!--Define o título da guia no navegador-->
+        <link rel="stylesheet" type="text/css" href="_css/estilo.css"> <!--Essa tag chama o arquivo estilo.css-->
+        <link rel="stylesheet" type="text/css" href="_css/form.css">
+    </head>
+
+    <script language="javascript" src="_javascript/funcoes.js"> </script> <!--Chama o arquivo funcoes.js-->
+    <script>
+        function calc_total(){
+            var qtd = parseInt(document.getElementById("cQtd").value);
+            tot = qtd * 1500;
+            document.getElementById("cTot").value = tot;
+        }
+    </script>
+    
+    <body>
+        
+        <div id="interface"> <!--Define uma divisão da página-->
+            <header id="cabecalho"> <!--Define a área de cabeçalho do arquivo-->
+            <hgroup> <!--Define um agrupamento de títulos-->
+            <h1>Google Glass</h1>
+            <h2>A revolução do Google está chegando</h2>
+            </hgroup>
+            
+            <img id="icone" src="_imagens/contato.png"> <!--Tag que insere uma imagem - precisa ter a extensão do arqivo(.png)-->
+         
+            <nav id="menu"> <!--Define um menu de navegação-->
+                <h1>Menu Principal</h1>
+                <ul type="disc"> <!--<ol>Define uma lista ORDENADA - <ul> Define uma NÃO ORDENADA-->      
+                    <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="index.html">Home</a></li> <!--Tag <li> indica que é um item da lista-->
+                    <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="specs.html">Especificações</a></li>
+                    <li onmouseover="mudaFoto('_imagens/fotos.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="fotos.html">Fotos</a></li>                      
+                    <li onmouseover="mudaFoto('_imagens/multimidia.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="multimidia.html">Multimídia</a></li>
+                    <li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="fale-conosco.html">Fale conosco</a></li>
+                </ul>
+            </nav>
+            
+            </header>
+            
+            <section id="corpo-full">
+                <article id="noticia-principal">
+                <header id="cabecalho-artigo">
+                <hgroup>
+                <h3>Fale Conosco > Contato</h3>
+                <h1>Formulário de Contato</h1>
+                <h2>por Gustavo Guanabara</h2>
+                <h3 class="direita">Atualizado em 01/Maio/2013</h3>
+                </hgroup>
+                </header>
+                    
+                    <form method="post" id="fContato" action="mailto:email@email.com" oninput="calc_total();"> <!--Define área do formulário-->
+    
+    <fieldset id="usuario"><!--Determina um conjunto de campos-->
+        <legend>Identificação do Usuário</legend>
+        <p><label for="cNome">Nome:</label><input type="text" name="tNome" id="cNome" size="20" maxlength="30" placeholder="Nome Completo"></p><!--tag input cria um espaço de entrada de dados, size é o tamanho da caixa de texto e maxlenght o numero maximo de caracteres-->
+        <p><label for="cSenha">Senha:<input type="password" name="tSenha" id="cSenha" size="8" maxlength="8" placeholder="Senha"></label></p>
+        <p><label for="cEmail">E-mail:<input type="email" name="tEmail" id="cEmail" size="20" maxlength="40" placeholder="Email"></label></p>
+        <fieldset id="sexo"><legend>Sexo:</legend>
+            <!--Opções de radio devem ter o mesmo nome para que apenas uma possa ser marcada-->
+            <input type="radio" name="tSexo" id="cMasc" checked> <label for="cMasc">Masculino</label><br>
+            <input type="radio" name="tSexo" id="cFem"> <label for="cFem">Feminino</label>
+        </fieldset>
+        <p><label for="cData">Data de Nascimento:<input type="date" name="tData" id="cData"></label></p>
+    </fieldset>
+    
+    <fieldset id="endereco">
+        <legend>Endereço do Usuário</legend>
+        <p><label for="cRua">Logradouro:<input type="text" name="tRua" id="cRua" size="13" maxlength="80" placeholder="Rua, Av, Travessa"></label></p>
+        <p><label for="cNum">Número:<input type="number" name="tNum" id="cNum" min="0" max="99999"></label></p>
+        <p><label for="cEst">Estado:
+                <select name="tEst" id="cEst">
+                    <!--Value determina o valor que será enviado ao recebedor do formulário, por exemplo um banco de dados-->
+                    <optgroup label="Região Sudeste"><option value="RJ">Rio de Janeiro</option>
+                    <option value="SP" selected>São Paulo</option>
+                    <option value="MG">Minas Gerais</option></optgroup>
+                    <optgroup label="Região Sul"><option value="PR">Paraná</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option>Rio Grande do Sul</option></optgroup>
+                </select>
+            </label></p>
+            <p><label for="cCid">Cidade:<input type="text" name="tCid" id="cCid" size="20" maxlength="40" placeholder="Cidade" list="Cidades"></label></p>
+            <datalist id="Cidades">
+                <option>Rio de Janeiro</option>
+                <option>Nova Iguaçu</option>
+                <option>Niterói</option>
+                <option>Belford Roxo</option>
+            </datalist>
+            
+    </fieldset>
+    
+    <fieldset id="mensagem">
+        <legend>Mensagem do Usuário</legend>
+        <p><label for="cUrg">Grau de Urgência: Mín<input type="range" name="tUrg" id="cUrg" min="0" max="10" step="2">Máx</label></p>
+        <p><label for="cMsg">Mensagem:<textarea name="tMsg" id="cMsg" cols="45" rows="5" placeholder="Deixe aqui sua mensagem"></textarea></label></p>
+    </fieldset>
+    
+    <fieldset id="pedido">
+        <legend>Quero um Google Glass</legend>
+        <p><label for="cPed"><input type="checkbox" name="tPed" id="cPed" checked>Gostaria de adquirir um Google Glass quando disponível</label></p>
+        <p><label for="cCor">Cor:<input type="color" name="tCor" id="cCor" value="#0000FF"></label></p>
+        <p><label for="cQtd">Quantidade:<input type="number" name="tQtd" id="cQtd" min="0" max="5" value="0"></label></p>
+        <p><label for="cTot">Preço Total: R$<input type="text" name="tTot" id="cTot" placeholder="Total a pagar" readonly></label></p>
+    </fieldset>
+                        
+                        <input type="image" src="_imagens/botao-enviar.png">
+</form>
+                </article>
+            </section>
+
+            <footer id="rodape">
+                <p>Copyright 2013 - by Gustavo Guanabara<br>
+                    <a href="http://facebook.com" target="blank">Facebook</a> | <a href="http://twitter.com" target="blank">Twitter</a></p>
+            </footer>
+        </div>       
+    </body>
+</html>
